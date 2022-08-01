@@ -1,25 +1,26 @@
 import React from "react";
 import "../app.css";
+import { Link } from "react-router-dom";
 
 const Aside = () => {
   return (
     <aside className="sidebar">
       <ul>
         <li>
-          <a href="#">
+          <Link to="/">
             <span className="icon">
               <i className="fas fa-book"></i>
             </span>
             <span className="title">Listing</span>
-          </a>
+          </Link>
         </li>
         <li>
-          <a href="#">
+          <Link to="/pokedex">
             <span className="icon">
               <i className="fas fa-id-card"></i>
             </span>
             <span className="title">Pokedex</span>
-          </a>
+          </Link>
         </li>
       </ul>
     </aside>

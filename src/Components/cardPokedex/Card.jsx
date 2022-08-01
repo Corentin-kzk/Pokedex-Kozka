@@ -2,18 +2,18 @@ import React from "react";
 import "./card.css";
 
 const getTheId = (url) => {
-    let splitedUrl = url.split('/').map(element => element.trim());
-    console.log(splitedUrl[6]);
-}   
+  let splitedUrl = url.split("/").map((element) => element.trim());
+  return splitedUrl[6];
+};
 
-const Card = ({pokemon}) => {
-    console.log(pokemon);
-    getTheId(pokemon.url)
+const Card = ({ pokemon }) => {
   return (
     <div className="card">
       <h2 className="card-title">{pokemon.name}</h2>
       <img
-        src={`https://github.com/PokeAPI/sprites/tree/master/sprites/pokemon/+ ${getTheId(pokemon.url)}`}
+        src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${getTheId(
+          pokemon.url
+        )}.png`}
         alt=""
       />
       <p className="card-desc">
