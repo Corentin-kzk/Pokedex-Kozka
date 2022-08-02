@@ -6,43 +6,21 @@ import {
 } from "../Components/pokemon.service/pokemon.service";
 import ProgressBar from "../Components/progressBar/ProgressBar";
 import ListType from "../Components/list/ListType";
-
 import "./pokemon.css";
 import ListAbylities from "../Components/list/ListAbylities";
 import Card from "../Components/cardPokedex/Card";
 
 const Pokemon = () => {
-  // STYLE
-  const pokemonContainer = {
-    width: "calc(100% - 200px)",
-    padding: 10,
-  };
-
   const banner = {
     width: "100%",
-    backgroundColor: "#f6e652",
-  };
-
-  const styleStats = {
-    display: "flex",
-    flexDirection: "row",
-    alignContent: "center",
-    alignItems: "center",
-    justifyContent: "space-around",
-  };
-
-  const listStats = {
-    width: "60%",
-    display: "flex",
-    flexDirection: "column",
-    alignContent: "center",
-    alignItems: "center",
+    backgroundColor: "#f6e652"
   };
 
   const { id } = useParams();
 
   let pokemon = usePokemonsByID(id);
   let evolution = useEvolutionsByID(id);
+  console.log(evolution);
   // get abilities
   let abilities = [];
   if (pokemon.abilities) {
@@ -59,19 +37,19 @@ const Pokemon = () => {
     types = pokemon.types;
   }
 
-  console.log(evolution.chain.species);
+  console.log(evolution.chain);
   return (
-    <section style={pokemonContainer}>
+    <section className="pokemonContainer">
       <section style={banner}>
         <h1 style={{ color: "#3b3b3b" }}>{pokemon.name}</h1>
       </section>
       <section>
-        <div style={styleStats}>
+        <div className="style-stats">
           <img
             src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${id}.svg`}
             alt=""
           />
-          <ul style={listStats}>
+          <ul className="list-stats">
             {stats.map((stat, index) => (
               <li style={{ width: "100%" }} key={Date.now() + index}>
                 <ProgressBar
@@ -105,8 +83,8 @@ const Pokemon = () => {
         </article>
         <article>
           <h2 style={banner}>Evolutions</h2>
-          <Card pokemon={evolution.chain.species}/>
-          <Card pokemon={evolution.chain.evolves_to[0].species}/>
+          {/* <Card pokemon={evolution.chain.species}/> */}
+          {/* <Card pokemon={evolution.chain.evolves_to[0].species}/> */}
          
         </article>
       </section>

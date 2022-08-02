@@ -24,10 +24,10 @@
   border-top-left-radius: 4px;
 }
 
-.card img {
+.card .image {
   width: 250px;
   height: auto;
-  max-height: 350px;
+  max-height: 300px;
   display: block;
   position: relative;
 }
@@ -41,11 +41,11 @@
   opacity: 0;
   padding: 18px 8%;
   background-color: white;
-  overflow-y: scroll;
   transition: 0.8s ease;
 }
 
 .card:hover .card-desc {
+  width: 100%;
   opacity: 1;
   height: 100%;
 }
@@ -55,4 +55,13 @@ h1 {
   color: #fff;
   margin: 40px 0 20px 0;
   text-align: center;
+}
+
+
+.button-more {
+  width: 60px;
+  transition: transform .7s ease-in-out;
+}
+.button-more:hover {
+  transform: rotate(360deg);
 }

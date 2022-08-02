@@ -1,12 +1,12 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 
-export function usePokemons() {
+export function usePokemons(url = 'https://pokeapi.co/api/v2/pokemon/') {
     const [pokemons, setPokemons] = useState([]);
 
     useEffect(() => {
         async function fetchData() {
-            const { data } = await axios.get('https://pokeapi.co/api/v2/pokemon/');
+            const { data } = await axios.get(url);
             setPokemons(data);
         }
         fetchData();

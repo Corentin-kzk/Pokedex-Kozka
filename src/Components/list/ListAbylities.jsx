@@ -2,7 +2,7 @@ import React from 'react';
 import './list.css'
 const ListAbylities = ({list}) => {
     return (
-        <ol class="gradient-list">
+        <ol className="gradient-list">
             {list.map((list, index) => (
                 <li key={Date.now() + index}>{list.ability.name}</li>
               ))}
