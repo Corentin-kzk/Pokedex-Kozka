@@ -13,14 +13,12 @@ import Card from "../Components/cardPokedex/Card";
 const Pokemon = () => {
   const banner = {
     width: "100%",
-    backgroundColor: "#f6e652"
+    backgroundColor: "#f6e652",
   };
 
   const { id } = useParams();
 
   let pokemon = usePokemonsByID(id);
-  let evolution = useEvolutionsByID(id);
-  console.log(evolution);
   // get abilities
   let abilities = [];
   if (pokemon.abilities) {
@@ -36,8 +34,9 @@ const Pokemon = () => {
   if (pokemon.types) {
     types = pokemon.types;
   }
+  let evolution = useEvolutionsByID(id);
 
-  console.log(evolution.chain);
+
   return (
     <section className="pokemonContainer">
       <section style={banner}>
@@ -83,9 +82,12 @@ const Pokemon = () => {
         </article>
         <article>
           <h2 style={banner}>Evolutions</h2>
-          {/* <Card pokemon={evolution.chain.species}/> */}
-          {/* <Card pokemon={evolution.chain.evolves_to[0].species}/> */}
-         
+          {evolution && (
+            <>
+              <Card pokemon={evolution.chain?.species} />
+              <Card pokemon={evolution.chain?.evolves_to[0].species} />
+            </>
+          )}
         </article>
       </section>
     </section>

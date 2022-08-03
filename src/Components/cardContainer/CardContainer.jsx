@@ -1,6 +1,4 @@
-import React from "react";
-
-import Card from "./Card";
+import Card from "../cardPokedex/Card";
 
 const CardContainer = ({pokemons}) => {
   
@@ -9,7 +7,6 @@ const CardContainer = ({pokemons}) => {
       {pokemons.map((pokemon, index) => (
         <Card pokemon={pokemon} key={Date.now() + index} />
       ))}
-      
     </section>
   );
 };

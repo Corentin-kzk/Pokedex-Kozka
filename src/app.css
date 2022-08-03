@@ -172,6 +172,10 @@ body {
   margin-right: 10px;
   display: inline-block;
 }
+.wrapper .sidebar ul li a span.icon i {
+  margin-right: 10px;
+}
+
 
 .wrapper .sidebar ul li a span.title {
   display: inline-block;

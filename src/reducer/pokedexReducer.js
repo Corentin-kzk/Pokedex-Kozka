@@ -1,21 +1,27 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-const initialState = [];
-
+let initialState = localStorage.getItem("pokedex")
+  ? JSON.parse(localStorage.getItem("pokedex"))
+  : [];
+ 
 export const PokedexSlice = createSlice({
   name: "pokedex",
   initialState,
   reducers: {
     add: (state, action) => {
-      state.push(action.payload);
+      if (!state.find((pokemon) => pokemon.name === action.payload.name)) {
+        state.push(action.payload);
+      }
+      //add items to local Storage
+      localStorage.setItem("pokedex", JSON.stringify(state));
     },
     remove: (state, action) => {
-      console.log(
-        state.splice(
-          state.findIndex((pokemon) => pokemon.name === action.payload.name),
-          1
-        )
+      state.splice(
+        state.findIndex((pokemon) => pokemon.name === action.payload.name),
+        1
       );
+       //remove item to local Storage
+      localStorage.setItem("pokedex", JSON.stringify(state));
     },
   },
 });

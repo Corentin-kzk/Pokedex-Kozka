@@ -6,15 +6,20 @@
 }
 
 .card {
+  background-color: #fff;
   margin: 40px;
   position: relative;
   width: 100%;
   max-width: 250px;
   max-height: 350px;
   box-shadow: 0 40px 60px -6px black;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .card-title {
+  align-self: stretch;
   display: block;
   text-align: center;
   color: #fff;
@@ -25,6 +30,7 @@
 }
 
 .card .image {
+  padding: 15px;
   width: 250px;
   height: auto;
   max-height: 300px;
@@ -32,23 +38,44 @@
   position: relative;
 }
 
-.card-desc {
-  display: block;
-  font-size: 1.2rem;
+.detail-btn {
   position: absolute;
-  height: 0;
-  top: 0;
-  opacity: 0;
-  padding: 18px 8%;
-  background-color: white;
-  transition: 0.8s ease;
+  bottom: 20px;
+  left: 5px;
+  z-index: 15;
+}
+.detail-btn div.detail-div {
+  position: relative;
+}
+.detail-btn div span {
+  position: absolute;
+  bottom: 0px;
+  left: 2px;
+  color: black;
+  font-size: 15px;
+  font-weight: bold;
 }
 
-.card:hover .card-desc {
-  width: 100%;
-  opacity: 1;
-  height: 100%;
+.pokedex-bookmark {
+  position: absolute;
+  bottom: -18px;
+  right: 9px;
+  z-index: 15;
 }
+.pokedex-bookmark svg {
+  font-size: 50px;
+  color: #f7e64d;
+}
+
+.pokedex-bookmark svg:hover{
+  color: #d94d3a;
+}
+
+.pokedex-bookmark svg.active{
+  color: #d94d3a;
+}
+
+
 
 h1 {
   font-size: 2.8rem;
@@ -59,7 +86,9 @@ h1 {
 
 
 .button-more {
-  width: 60px;
+  position: absolute;
+  left: 5px;
+  width: 45px;
   transition: transform .7s ease-in-out;
 }
 .button-more:hover {

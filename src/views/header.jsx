@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import "../app.css";
 import Aside from "./Aside";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faSearch } from "@fortawesome/free-solid-svg-icons";
 
 const Header = ({ changeCollapse }) => {
   let onSearchSubmit = (event) => {
@@ -26,7 +28,7 @@ const Header = ({ changeCollapse }) => {
               placeholder="Search"
             />
             <button className="searchButton" href="#">
-              <i className="fas fa-search"></i>
+              <FontAwesomeIcon icon={faSearch} />
             </button>
           </form>
         </div>

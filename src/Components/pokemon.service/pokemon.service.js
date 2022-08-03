@@ -1,40 +1,43 @@
-import { useState, useEffect } from 'react';
-import axios from 'axios';
+import { useState, useEffect } from "react";
+import axios from "axios";
 
-export function usePokemons(url = 'https://pokeapi.co/api/v2/pokemon/') {
-    const [pokemons, setPokemons] = useState([]);
+/**
+ * get data with Axios
+ * @param {FUNCTION} setData
+ * @param {STRING} url
+ */
+async function fetchData(setData, url) {
+  const { data } = await axios.get(url);
+  setData(data);
+}
 
-    useEffect(() => {
-        async function fetchData() {
-            const { data } = await axios.get(url);
-            setPokemons(data);
-        }
-        fetchData();
-    }, []); 
-    return pokemons;
+export function usePokemons(url = "https://pokeapi.co/api/v2/pokemon/") {
+  const [pokemons, setPokemons] = useState(null);
+  useEffect(() => {
+    fetchData(setPokemons, url);
+  },[]);
+  return pokemons;
+}
+export function usePokemonsByUrl(url) {
+  const [pokemons, setPokemons] = useState([]);
+  useEffect(() => {
+    fetchData(setPokemons, url);
+  }, []);
+  return pokemons;
 }
 
 export function usePokemonsByID(id) {
-    const [pokemon, setPokemon] = useState([]);
-    useEffect(() => {
-        async function fetchData(id) {
-            const { data } = await axios.get(`https://pokeapi.co/api/v2/pokemon/${id}/`);
-            setPokemon(data);
-        }
-        fetchData(id);
-    }, []);
-    return pokemon;
+  const [pokemon, setPokemon] = useState([]);
+  useEffect(() => {
+    fetchData(setPokemon, `https://pokeapi.co/api/v2/pokemon/${id}/`);
+  }, []);
+  return pokemon;
 }
 
-
 export function useEvolutionsByID(id) {
-    const [evolution, setEvolution] = useState([]);
-    useEffect(() => {
-        async function fetchData(id) {
-            const { data } = await axios.get(`https://pokeapi.co/api/v2/evolution-chain/${id}/`);
-            setEvolution(data);
-        }
-        fetchData(id);
-    }, []);
-    return evolution;
+  const [evolution, setEvolution] = useState(null);
+  useEffect(() => {
+    fetchData(setEvolution, `https://pokeapi.co/api/v2/evolution-chain/${id}/`);
+  }, []);
+  return evolution;
 }
