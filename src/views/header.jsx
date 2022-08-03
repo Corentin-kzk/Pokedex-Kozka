@@ -4,10 +4,10 @@ import Aside from "./Aside";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 
-const Header = ({ changeCollapse }) => {
-  let onSearchSubmit = (event) => {
+const Header = ({ changeCollapse, setSearch }) => {
+  let handleChange = (event) => {
     event.preventDefault();
-    console.log(event.target.search.value);
+    setSearch(event.target.value);
   };
   return (
     <>
@@ -20,17 +20,18 @@ const Header = ({ changeCollapse }) => {
         <div className="top_menu">
           <div className="logo">POKEDEX</div>
 
-          <form className="searchBox" onSubmit={(e) => onSearchSubmit(e)}>
+          <div className="searchBox">
             <input
               className="searchInput"
               type="text"
               name="search"
               placeholder="Search"
+                onChange={(e) => handleChange(e)}
             />
             <button className="searchButton" href="#">
               <FontAwesomeIcon icon={faSearch} />
             </button>
-          </form>
+          </div>
         </div>
       </header>
       <Aside />

@@ -11,7 +11,7 @@ async function fetchData(setData, url) {
   setData(data);
 }
 
-export function usePokemons(url = "https://pokeapi.co/api/v2/pokemon/") {
+export function usePokemons(url = "https://pokeapi.co/api/v2/pokemon/?limit=1500") {
   const [pokemons, setPokemons] = useState(null);
   useEffect(() => {
     fetchData(setPokemons, url);

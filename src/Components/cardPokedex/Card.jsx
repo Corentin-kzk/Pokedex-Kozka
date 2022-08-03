@@ -20,8 +20,6 @@ const Card = ({ pokemon }) => {
   const dispatch = useDispatch();
   const isPresent = pokedex.find((pokedex) => pokedex.name === pokemon.name);
 
-  console.log(isPresent);
-
   const savedInPokedex = () => {
     if (isPresent) {
       dispatch(remove(pokemon));
