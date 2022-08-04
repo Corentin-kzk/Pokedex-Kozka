@@ -25,7 +25,7 @@ const App = () => {
         <div className="main_container">
           <Routes>
             <Route path="/" element={<Home search={search} />} />
-            <Route path="/pokedex" element={<Pokedex />} />
+            <Route path="/pokedex" element={<Pokedex search={search} />} />
             <Route path="/pokemon/:id" element={<Pokemon />} />
           </Routes>
         </div>

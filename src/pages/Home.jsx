@@ -9,28 +9,23 @@ const Home = ({ search }) => {
 
   //stocke les resultats des pokemons
   let pokemonResult = [];
-  if (pokemons) {
-    pokemonResult = pokemons.results;
-    if (search) {
-      let re = new RegExp(search + ".+$", "i");
-      pokemonResult = pokemonResult.filter(function (e, i, a) {
-        return e.name.search(re) != -1;
-      });
-      // pokemonResult = pokemonResult.filter((pokemon) => {
-      //   console.log(JSON.parse(pokemon.name));
-      //   console.log(json.parse(search));
-      //   return pokemon.name === search;
-      // });
-    }
-    return (
-      <>
-        {" "}
-        <CardContainer pokemons={pokemonResult} />{" "}
-      </>
-    );
-  } else {
+  // if (pokemons) {
+  //   pokemonResult = pokemons.results;
+  //   if (search) {
+  //     let re = new RegExp(search + ".+$", "i");
+  //     pokemonResult = pokemonResult.filter(function (e, i, a) {
+  //       return e.name.search(re) != -1;
+  //     });
+  //   }
+  //   return (
+  //     <>
+  //       {" "}
+  //       <CardContainer pokemons={pokemonResult} />{" "}
+  //     </>
+  //   );
+  // } else {
     return <Loader />;
-  }
+  // }
 };
 
 export default Home;
