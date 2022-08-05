@@ -36,6 +36,7 @@
   max-height: 300px;
   display: block;
   position: relative;
+  filter: drop-shadow(3px 5px 2px rgb(0 0 0 / 0.4));
 }
 
 .detail-btn {
@@ -67,15 +68,13 @@
   color: #f7e64d;
 }
 
-.pokedex-bookmark svg:hover{
+.pokedex-bookmark svg:hover {
   color: #d94d3a;
 }
 
-.pokedex-bookmark svg.active{
-  color: #d94d3a;
+.pokedex-bookmark svg.active {
+  color: #d94d3a !important ;
 }
-
-
 
 h1 {
   font-size: 2.8rem;
@@ -84,12 +83,15 @@ h1 {
   text-align: center;
 }
 
-
 .button-more {
   position: absolute;
   left: 5px;
   width: 45px;
-  transition: transform .7s ease-in-out;
+  transition: transform 0.7s ease-in-out;
+}
+
+.button-more svg {
+  filter: drop-shadow(3px 5px 2px rgb(0 0 0 / 0.4));
 }
 .button-more:hover {
   transform: rotate(360deg);

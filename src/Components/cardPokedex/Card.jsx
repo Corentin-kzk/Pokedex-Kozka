@@ -2,15 +2,8 @@ import React, { useState } from "react";
 import "./card.css";
 import { Link } from "react-router-dom";
 import pokeBall from "../../assets/pokeBall.svg";
-import { useDispatch } from "react-redux";
-import { add, remove } from "../../reducer/pokedexReducer";
-import "https://kit.fontawesome.com/b99e675b6e.js";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBookmark } from "@fortawesome/free-solid-svg-icons";
-import { useSelector } from "react-redux";
-import Modal from "../Modal/Modal";
-import useModal from "../Modal/useModal";
-import Button from "../button/Button";
+import { useDispatch ,useSelector} from "react-redux";
+import BookMark from "../bookMark/BookMark";
 
 const getTheId = (url) => {
   let splitedUrl = url.split("/").map((element) => element.trim());
@@ -18,41 +11,16 @@ const getTheId = (url) => {
 };
 
 const Card = ({ pokemon }) => {
-  const { isShowing: Showed, toggle: toggle } = useModal();
+ 
   const pokedex = useSelector((state) => state.pokedex);
 
   const dispatch = useDispatch();
   const isPresent = pokedex.find((pokedex) => pokedex.name === pokemon.name);
 
-  const savedInPokedex = () => {
-    if (isPresent) {
-      toggle();
-    } else {
-      dispatch(add(pokemon));
-    }
-  };
   const id = getTheId(pokemon.url);
 
   return (
     <>
-      <Modal isShowing={Showed} hide={toggle} title="Confirm Delete">
-        <p style={{ lineHeight: 5, letterSpacing: "2px" }}>
-          Are you sure you want release{" "}
-          <span style={{ fontWeight: "bolder", color: "red" }}>
-            {pokemon.name}
-          </span>
-          ?{" "}
-        </p>
-        <div
-          style={{
-            display: "flex",
-            justifyContent: "space-around",
-          }}
-        >
-          <Button name={"YES"} onClick={() => dispatch(remove(pokemon))} />
-          <Button name={"NO"} onClick={toggle} />
-        </div>
-      </Modal>
       <div className="card">
         <h2 className="card-title">{pokemon.name}</h2>
         <img
@@ -66,15 +34,7 @@ const Card = ({ pokemon }) => {
             <span>Details</span>
           </div>
         </Link>
-        <div className="pokedex-bookmark">
-          <FontAwesomeIcon
-            className={isPresent ? "active" : ""}
-            icon={faBookmark}
-            onClick={() => {
-              savedInPokedex();
-            }}
-          />
-        </div>
+        <BookMark isPresent={isPresent} pokemon={pokemon}/>
       </div>
     </>
   );

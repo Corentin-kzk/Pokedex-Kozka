@@ -22,7 +22,9 @@ const Aside = () => {
           <Link to="/pokedex">
             <span className="icon">
               <FontAwesomeIcon icon={faIdCard} />
-              {pokedex.length >= 1 && pokedex.length}
+              {pokedex.length >= 1 && <span className="number-pokemon" >{pokedex.length}</span>}
+              
+              
             </span>
             <span className="title">Pokedex</span>
           </Link>

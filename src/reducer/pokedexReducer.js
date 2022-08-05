@@ -1,9 +1,10 @@
 import { createSlice } from "@reduxjs/toolkit";
+import addToLocalStorage from "../Components/pokemon.service/pokemon.service.localStorage";
 
 let initialState = localStorage.getItem("pokedex")
   ? JSON.parse(localStorage.getItem("pokedex"))
   : [];
- 
+
 export const PokedexSlice = createSlice({
   name: "pokedex",
   initialState,
@@ -12,16 +13,14 @@ export const PokedexSlice = createSlice({
       if (!state.find((pokemon) => pokemon.name === action.payload.name)) {
         state.push(action.payload);
       }
-      //add items to local Storage
-      localStorage.setItem("pokedex", JSON.stringify(state));
+      addToLocalStorage(state);
     },
     remove: (state, action) => {
       state.splice(
         state.findIndex((pokemon) => pokemon.name === action.payload.name),
         1
       );
-       //remove item to local Storage
-      localStorage.setItem("pokedex", JSON.stringify(state));
+      addToLocalStorage(state);
     },
   },
 });

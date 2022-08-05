@@ -23,6 +23,7 @@ body {
   display: flex;
   position: fixed;
   top: 10px;
+  z-index: 25;
 }
 
 .wrapper .top_navbar .hamburger {
@@ -52,6 +53,7 @@ body {
   align-items: center;
   padding: 0 20px;
   box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+
 }
 
 .wrapper .top_navbar .top_menu .logo {
@@ -60,6 +62,9 @@ body {
   font-weight: 700;
   letter-spacing: 3px;
 }
+
+.wrapper .top_navbar .top_menu .logo-image
+{ display: none;}
 
 .wrapper .top_navbar .top_menu ul {
   display: flex;
@@ -129,6 +134,16 @@ body {
 }
 
 @media screen and (max-width: 620px) {
+  .wrapper .top_navbar .top_menu .logo {
+    display: none;
+  }
+  .wrapper .top_navbar .top_menu .logo-image {
+    display: block;
+  }
+  .wrapper .top_navbar .top_menu .logo-image img {
+    height: 30px;
+    width: auto;
+  }
   .searchBox:hover > .searchInput {
     width: 125px;
     padding: 0 6px;
@@ -172,10 +187,28 @@ body {
   margin-right: 10px;
   display: inline-block;
 }
-.wrapper .sidebar ul li a span.icon i {
+.wrapper .sidebar ul li a span.icon svg {
   margin-right: 10px;
 }
 
+.wrapper .sidebar ul li a span.icon span.number-pokemon {
+  position: absolute;
+  font-weight: bolder;
+  font-size: 15px;
+  color: #fff;
+  background-color: #d94d3a;
+  padding: 4px 10px;
+  border-radius: 50%;
+}
+
+.wrapper.collapse .sidebar ul li a span.icon span.number-pokemon {
+  bottom: 0px;
+  left: 40px;
+}
+.wrapper .sidebar ul li a span.icon span.number-pokemon {
+  bottom: 15px;
+  left: 145px;
+}
 
 .wrapper .sidebar ul li a span.title {
   display: inline-block;
