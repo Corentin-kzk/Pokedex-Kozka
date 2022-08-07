@@ -31,17 +31,19 @@ const Pokemon = () => {
     padding: 10,
     margin: "2% 0%",
   };
-
+  //get the URL param ID
   const { id } = useParams();
-
+  //get pokemons in Redux
   const pokedex = useSelector((state) => state.pokedex);
-
+  //get data with API (pokemon and species)
   const pokemon = usePokemonsByID(id);
   const species = useSpeciesByID(id);
 
   useEffect(() => {
     if (!species) return;
+    //get the id in url
     const pokeID = Number(species.evolution_chain.url.split("/").reverse()[1]);
+    //get evolution chain with API and custom function
     const getEvolutionChain = async () => {
       const { chain } = await useEvolutionsByID(pokeID);
       setChain(chain);
@@ -59,14 +61,17 @@ const Pokemon = () => {
     const abilities = pokemon.abilities;
     const stats = pokemon.stats;
     const types = pokemon.types;
+    //check if we have pokemon in pokedex
     const isPresent = pokedex.find((pokedex) => pokedex.name === pokemon.name);
 
+    //calculate te percent of femal
     let genderPercentOfFemal;
     if (species.gender_rate == -1) {
       genderPercentOfFemal = -1;
     } else genderPercentOfFemal = (species.gender_rate / 8) * 100;
+
     return (
-      <section className="pokemonContainer details-page">
+      <section className="pokemonContainer details-page" >
         <section style={banner}>
           <h1 style={{ color: "#3b3b3b" }}>{pokemon.name}</h1>
           <BookMark
@@ -77,7 +82,7 @@ const Pokemon = () => {
         <section>
           <div className="style-stats">
             <img
-            className="details-image"
+              className="details-image"
               src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${id}.svg`}
               alt=""
             />

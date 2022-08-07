@@ -10,7 +10,9 @@ const Home = ({ search }) => {
   let pokemonResult = [];
   if (pokemons) {
     pokemonResult = pokemons.results;
+    // Make Search Pokemon if we have search data
     if (search) {
+      //regEX to filter
       let re = new RegExp(search + ".+$", "i");
       pokemonResult = pokemonResult.filter(function (e) {
         return e.name.search(re) != -1;

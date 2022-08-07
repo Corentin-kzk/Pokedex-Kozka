@@ -10,7 +10,7 @@
   margin: 40px;
   position: relative;
   width: 100%;
-  max-width: 250px;
+  max-width: 240px;
   max-height: 350px;
   box-shadow: 0 40px 60px -6px black;
   display: flex;
@@ -31,7 +31,7 @@
 
 .card .image {
   padding: 15px;
-  width: 250px;
+  width: 100%;
   height: auto;
   max-height: 300px;
   display: block;

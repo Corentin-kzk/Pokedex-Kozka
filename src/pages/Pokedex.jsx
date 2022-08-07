@@ -5,7 +5,9 @@ import Loader from "../Components/loader/Loader";
 
 const Pokedex = ({ search }) => {
   let pokedex = useSelector((state) => state.pokedex);
+  // Make Search Pokemon if we have search data
   if (search) {
+    //regEX to filter
     let re = new RegExp(search + ".+$", "i");
     pokedex = pokedex.filter(function (e, i, a) {
       return e.name.search(re) != -1;

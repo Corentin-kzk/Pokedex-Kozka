@@ -4,24 +4,25 @@ import Aside from "./Aside";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import { useLocation } from "react-router-dom";
-import pokeball from "../assets/pokeBall.svg"
+import pokeball from "../assets/pokeBall.svg";
 
 const Header = ({ changeCollapse, setSearch }) => {
   const [isPokemonPage, setIsPokemonPage] = useState(null);
 
+  //check if we are on details page
   const location = useLocation();
-  console.log(location.pathname);
   let splitedUrl = location.pathname
     .split("/")
     .map((element) => element.trim());
   useEffect(() => {
     if (splitedUrl[1] === "pokemon") {
       setIsPokemonPage(true);
-    }else {
+    } else {
       setIsPokemonPage(false);
     }
   }, [location]);
 
+  //get the data on the search field
   let handleChange = (event) => {
     event.preventDefault();
     setSearch(event.target.value);
@@ -36,7 +37,9 @@ const Header = ({ changeCollapse, setSearch }) => {
         </div>
         <div className="top_menu">
           <div className="logo">POKEDEX</div>
-          <div className="logo-image"><img src={pokeball} alt="" /></div>
+          <div className="logo-image">
+            <img src={pokeball} alt="" />
+          </div>
           {!isPokemonPage && (
             <div className="searchBox">
               <input

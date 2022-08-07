@@ -10,9 +10,8 @@ import axios from "axios";
 async function fetchData(url, setData = null) {
   const { data } = await axios.get(url);
   setData(data);
-
 }
-
+// get all pokemon
 export function usePokemons(
   url = "https://pokeapi.co/api/v2/pokemon/?limit=649"
 ) {
@@ -22,14 +21,7 @@ export function usePokemons(
   }, []);
   return pokemons;
 }
-export function usePokemonsByUrl(url) {
-  const [pokemons, setPokemons] = useState([]);
-  useEffect(() => {
-    fetchData(url, setPokemons);
-  }, []);
-  return pokemons;
-}
-
+// get  pokemon  details with id in url
 export function usePokemonsByID(id) {
   const [pokemon, setPokemon] = useState(null);
   useEffect(() => {
@@ -37,7 +29,7 @@ export function usePokemonsByID(id) {
   }, []);
   return pokemon;
 }
-
+// get  pokemon species with id in url
 export function useSpeciesByID(id) {
   const [species, setSpecies] = useState(null);
   useEffect(() => {
@@ -46,13 +38,16 @@ export function useSpeciesByID(id) {
   return species;
 }
 
+// get pokemon evolutions with id in url
 export async function useEvolutionsByID(id) {
-  const test = async () => {
-    const evol = await axios.get(`https:/pokeapi.co/api/v2/evolution-chain/${id}/`)
-    return evol
+  const getEvol = async () => {
+    const evol = await axios.get(
+      `https:/pokeapi.co/api/v2/evolution-chain/${id}/`
+    );
+    return evol;
   };
-  const {data} = await test();
-  return data
+  const { data } = await getEvol();
+  return data;
 }
 
 //get and sort evulotion make by ProNatik et Jordan KAYA

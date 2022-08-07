@@ -10,8 +10,9 @@ import Pokemon from "./pages/Pokemon";
 
 const App = () => {
   const [collapse, setCollapse] = useState(false);
-  const [search, setSearch] = useState("")
+  const [search, setSearch] = useState("");
 
+  //set Header collapse
   let changeCollapse = () => {
     let reverse = !collapse;
     setCollapse(reverse);
@@ -20,13 +21,16 @@ const App = () => {
   return (
     <BrowserRouter>
       <div className={collapse ? "wrapper" : "wrapper collapse"}>
-        <Header changeCollapse={changeCollapse} setSearch={setSearch}/>
+        <Header changeCollapse={changeCollapse} setSearch={setSearch} />
 
         <div className="main_container">
           <Routes>
             <Route path="/" element={<Home search={search} />} />
             <Route path="/pokedex" element={<Pokedex search={search} />} />
-            <Route path="/pokemon/:id" element={<Pokemon />} />
+            <Route
+              path="/pokemon/:id"
+              element={<Pokemon key={Math.floor(Math.random() * Date.now())} />}
+            />
           </Routes>
         </div>
       </div>
